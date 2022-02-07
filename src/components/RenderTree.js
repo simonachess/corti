@@ -41,7 +41,7 @@ export default function RenderTree() {
 				{data?.map((node, i) => {
 					return (
 						<li key={i} className='node'>
-							<div onClick={()=>handleActiveNode(node, level)} >{node.title}</div>
+							<div onClick={()=>handleActiveNode(node, level)} className={`${active[active.length-1]===node.id ? "active": ""}`}><span className='triangle'></span>{node.title}</div>
 							{node.nodes?.length > 0 && 
 								<div className={`${active.includes(node.id) ? "" : "hidden-levels"}`}>{createMenu(node.nodes, level+1)}</div>}
 								
@@ -62,7 +62,7 @@ export default function RenderTree() {
 					)
 				})}
 			</ul>
-			<p onClick={()=>{handleShowFolders(Object.keys(fetchedData)[0])}} className='title'>{Object.keys(fetchedData)[0]}</p>
+			<p onClick={()=>{handleShowFolders(Object.keys(fetchedData)[0])}} className={`title ${breadcrumbs.length===1 ? "active": ""}`}>{Object.keys(fetchedData)[0]}</p>
 			 <div className={`${breadcrumbs.length > 0 ? "" : "hidden-breadcrumb"}`}>{menu}</div>
 		</div>
 	)

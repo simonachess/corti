@@ -10,6 +10,8 @@
 	padding: 5px 0 0 10px;
 	cursor: pointer;
 	width: max-content;
+	position: relative;
+	list-style: none;
 }
 
 .title{
@@ -22,4 +24,17 @@
 	list-style: none;
 	padding-bottom: 20px;
 	height: 60px;
+}
+
+.active{
+	color:red
+}
+
+
+.triangle{
+	position: absolute;
+	top: 12px;
+	left:-7px;
+	border-bottom: 10px solid grey;
+	border-left: 10px solid transparent;
 }
