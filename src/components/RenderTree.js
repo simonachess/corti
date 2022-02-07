@@ -11,7 +11,6 @@ export default function RenderTree() {
 		const getData = async()=>{
 			try{
 				const response = await axios.get('https://run.mocky.io/v3/cb495939-3cfd-48af-9a21-041d4a78c49e');
-				console.log(response.data)
 				setFetchedData(response.data)
 			}
 			catch(err){
@@ -35,7 +34,6 @@ export default function RenderTree() {
 	}
 
 	const createMenu = (data, level) => {
-		console.log('data',data)
 		return (
 			<ul>
 				{data?.map((node, i) => {
