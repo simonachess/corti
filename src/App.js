@@ -1,6 +1,5 @@
 import './App.css';
-// import RenderTree from './components/RenderTree';
-import RenderTree from './components/RenderTree2';
+import RenderTree from './components/RenderTree';
 import './components/RenderTree.css';
 
 function App() {

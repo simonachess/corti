@@ -1,14 +1,29 @@
-import React, {useState} from 'react'
-import data from '../data/data'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
 export default function RenderTree() {
 
+	const [fetchedData, setFetchedData] = useState([])
 	const [active, setActive] = useState([])
 	const [breadcrumbs, setBreadcrumbs] =useState([])
 	
+	useEffect(()=>{
+		const getData = async()=>{
+			try{
+				const response = await axios.get('https://run.mocky.io/v3/cb495939-3cfd-48af-9a21-041d4a78c49e');
+				console.log(response.data)
+				setFetchedData(response.data)
+			}
+			catch(err){
+				console.log("Error",err)
+			}
+		}
+		getData();
+	},[])
+	
 	const handleActiveNode = (node, level) =>{
 		const copyActive = active.slice(0, level-1)
-		const copyBreadcrumb = breadcrumbs.slice(0, level)
+		const copyBreadcrumb = breadcrumbs.slice(0,level)
 		setActive([...copyActive, node.id])
 		setBreadcrumbs([...copyBreadcrumb, node.title])
 	}
@@ -20,6 +35,7 @@ export default function RenderTree() {
 	}
 
 	const createMenu = (data, level) => {
+		console.log('data',data)
 		return (
 			<ul>
 				{data?.map((node, i) => {
@@ -35,7 +51,7 @@ export default function RenderTree() {
 		)
 	}
 
-	const menu = createMenu(data.Documents, 1)
+	const menu = createMenu(fetchedData.Documents, 1)
 
 	return (
 		<div className='container'>
@@ -46,7 +62,7 @@ export default function RenderTree() {
 					)
 				})}
 			</ul>
-			<p onClick={()=>{handleShowFolders(Object.keys(data)[0])}} className='title'>{Object.keys(data)[0]}</p>
+			<p onClick={()=>{handleShowFolders(Object.keys(fetchedData)[0])}} className='title'>{Object.keys(fetchedData)[0]}</p>
 			 <div className={`${breadcrumbs.length > 0 ? "" : "hidden-breadcrumb"}`}>{menu}</div>
 		</div>
 	)

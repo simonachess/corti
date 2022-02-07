@@ -16,3 +16,10 @@
 	cursor: pointer;
 	width: max-content;
 }
+
+.breadcrumb-container{
+	display: flex;
+	list-style: none;
+	padding-bottom: 20px;
+	height: 60px;
+}
