@@ -1,3 +1,8 @@
+# What this code does?
+
+Written code renders the Directory Browser. When you click on node, it shows the active node and the path to this node.
+If you clicked on nodes and then wanna delete all path, by clicking on parent (Documents) - it will not be deleted, but if you click the parent which is up one or two levels - it will work and show you the correct path.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
